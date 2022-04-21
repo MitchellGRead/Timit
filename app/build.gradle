@@ -1,8 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -29,12 +27,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
         useIR = true
     }
 
@@ -74,14 +72,6 @@ dependencies {
     implementation "androidx.activity:activity-compose:$activity_compose_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-
-    /* Hilt */
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt("com.google.dagger:hilt-compiler:$hilt_version")
-    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
-    testAnnotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
-    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
-    androidTestAnnotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
 
     /* Timber */
     implementation "com.jakewharton.timber:timber:$timber_version"
